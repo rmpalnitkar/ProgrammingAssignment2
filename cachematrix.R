@@ -6,7 +6,7 @@
 ## Create an object that represents a matrix and its inverse
 ## Define functions that allow access to the matrix and the inverse
 
-makeCacheMatrix <- function(x = matrix()) {
+makeCacheMatrix <- function(m = matrix()) {
         ## invalidate inverse cache
         invM <- NULL
         ## get function returns matrix object
@@ -30,10 +30,11 @@ makeCacheMatrix <- function(x = matrix()) {
 ## Compute matrix inverse
 
 cacheSolve <- function(x, ...) {
+        mt<-makeCacheMatrix(x)
         ## Return a matrix that is the inverse of 'x'
-        if(is.null(m$getInv())) {
-                m$setInv(solve(m$get(),...))
+        if(is.null(mt$getInv())) {
+                mt$setInv(solve(mt$get(),...))
         }
         ## Return cached matrix inverse
-        m$getInv()
+        mt$getInv()
 }
